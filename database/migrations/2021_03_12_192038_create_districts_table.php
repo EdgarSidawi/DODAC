@@ -19,6 +19,15 @@ class CreateDistrictsTable extends Migration
             $table->string('name');
             $table->integer('region_id')->unsigned();
 
+            $table->integer('malaria_threshold');
+            $table->integer('malaria_current');
+            $table->integer('cholera_threshold');
+            $table->integer('cholera_current');
+            $table->integer('corona_threshold');
+            $table->integer('corona_current');
+            $table->integer('Ebola_threshold');
+            $table->integer('Ebola_current');
+
             $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
 
             $table->timestamps();
