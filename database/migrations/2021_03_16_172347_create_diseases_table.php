@@ -16,10 +16,12 @@ class CreateDiseasesTable extends Migration
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('district_id');
+            $table->integer('district_id')->unsigned();
             $table->string('name');
             $table->integer('threshold');
             $table->integer('current');
+
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
 
             $table->timestamps();
         });
