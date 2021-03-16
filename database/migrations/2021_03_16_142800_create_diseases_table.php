@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDistrictsTable extends Migration
+class CreateDiseasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateDistrictsTable extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('diseases', function (Blueprint $table) {
             $table->id();
-
-            $table->string('name');
-            $table->integer('region_id')->unsigned();
-
-            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
-
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreateDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('diseases');
     }
 }
