@@ -16,8 +16,8 @@ class CreateDiseasesTable extends Migration
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('district_id')->unsigned();
             $table->string('name');
+            $table->integer('district_id')->unsigned();
             $table->integer('threshold');
             $table->integer('current');
 
