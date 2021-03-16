@@ -15,6 +15,12 @@ class CreateDiseasesTable extends Migration
     {
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('district_id');
+            $table->string('name');
+            $table->integer('threshold');
+            $table->integer('current');
+
             $table->timestamps();
         });
     }
