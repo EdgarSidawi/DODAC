@@ -17,7 +17,7 @@ class CreateDiseasesTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->integer('district_id')->unsigned();
+            $table->unsignedBigInteger('district_id');
             $table->integer('threshold');
             $table->integer('current');
 
