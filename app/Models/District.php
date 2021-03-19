@@ -12,4 +12,8 @@ class District extends Model
     public function region(){
         $this->belongsTo(Region::class);
     }
+
+    public function disease(){
+        $this->hasMany(Disease::class);
+    }
 }
