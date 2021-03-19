@@ -9,7 +9,8 @@ class Disease extends Model
 {
     use HasFactory;
 
-    public function district(){
+    public function district()
+    {
         return $this->belongsTo(District::class);
     }
 }

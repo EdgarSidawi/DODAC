@@ -9,7 +9,8 @@ class Region extends Model
 {
     use HasFactory;
 
-    public function district(){
+    public function district()
+    {
         return $this->hasMany(District::class);
     }
 }
