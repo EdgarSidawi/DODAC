@@ -23,7 +23,8 @@ class PatientFactory extends Factory
     {
         return [
             'firstName'=> $this->faker->firstName,
-            'middleName'=>$this->faker->name
+            'middleName'=>$this->faker->name,
+            'lastName' => $this->faker->lastName
         ];
     }
 }
