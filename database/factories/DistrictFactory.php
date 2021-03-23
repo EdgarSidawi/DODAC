@@ -24,10 +24,7 @@ class DistrictFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'region_id' => function () {
-             //   return Factory(Region::class)->create()->id;
-                return Region::all()->random;
-            }
+            'region_id'=> Region::all()->random()->id
         ];
     }
 }
