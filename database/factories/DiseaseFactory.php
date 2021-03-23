@@ -27,7 +27,8 @@ class DiseaseFactory extends Factory
             'district_id' => function (){
                 return District::all()->random;
              //   return Factory(District::class)->create()->id;
-            }
+            },
+            'threshold' => random_int(1, 10),
 
         ];
     }
