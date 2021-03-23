@@ -29,7 +29,7 @@ class DiseaseFactory extends Factory
              //   return Factory(District::class)->create()->id;
             },
             'threshold' => random_int(1, 10),
-
+            'current' => random_int(0, 10)
         ];
     }
 }
