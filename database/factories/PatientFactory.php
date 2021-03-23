@@ -22,7 +22,7 @@ class PatientFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'firstName'=> $this->faker->firstName,
         ];
     }
 }
