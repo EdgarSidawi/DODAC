@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Disease;
+use App\Models\District;
 use App\Models\Patient;
 use App\Models\Region;
 use App\Models\User;
@@ -21,5 +23,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Patient::factory(10)->create();
         Region::factory(10)->create();
+        District::factory(30)->create();
+        Disease::factory(3)->create();
     }
 }
