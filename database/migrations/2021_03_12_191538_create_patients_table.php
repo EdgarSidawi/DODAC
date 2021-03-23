@@ -19,7 +19,6 @@ class CreatePatientsTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->date('dateOfBirth');
-            $table->integer('age');
             $table->text('allergies');
             $table->text('last_disease_diagnosed');
             $table->text('last_visited_hospital');
