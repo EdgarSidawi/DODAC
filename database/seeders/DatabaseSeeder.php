@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Patient;
+use App\Models\Region;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,5 +20,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
         Patient::factory(10)->create();
+        Region::factory(10)->create();
     }
 }
