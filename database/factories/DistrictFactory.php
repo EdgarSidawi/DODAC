@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\District;
+use App\Models\Region;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DistrictFactory extends Factory
@@ -22,7 +23,11 @@ class DistrictFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name
+            'name' => $this->faker->name,
+            'region_id' => function () {
+             //   return Factory(Region::class)->create()->id;
+                return Region::all()->random;
+            }
         ];
     }
 }
