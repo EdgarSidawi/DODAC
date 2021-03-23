@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Disease;
+use App\Models\District;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DiseaseFactory extends Factory
@@ -23,6 +24,10 @@ class DiseaseFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'district_id' => function (){
+                return District::all()->random;
+             //   return Factory(District::class)->create()->id;
+            }
 
         ];
     }
