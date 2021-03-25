@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RegionResource;
 use App\Models\Region;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-       return Region::all();
+       return RegionResource::collection(Region::all());
     }
 
     /**
@@ -37,7 +38,7 @@ class RegionController extends Controller
      */
     public function show(Region $region)
     {
-        return $region;
+        return new RegionResource($region);
     }
 
     /**
@@ -54,7 +55,6 @@ class RegionController extends Controller
                 'name' => $request->name
             ]
         );
-
         return response('update successfully!');
     }
 
