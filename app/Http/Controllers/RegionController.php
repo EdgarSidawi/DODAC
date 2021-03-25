@@ -14,17 +14,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        Region::all();
     }
 
     /**
@@ -45,17 +35,6 @@ class RegionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Region $region)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Region  $region
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Region $region)
     {
         //
     }
