@@ -15,7 +15,6 @@ class PatientController extends Controller
     public function index()
     {
         return Patient::all();
-        //    return Patient::latest()->get();
     }
 
 
@@ -52,7 +51,15 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $patient->update([
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'dateOfBirth' => $request->dateOfBirth,
+            'allergies' => $request->allergies,
+            'last_disease_diagnosed' => $request->last_disease_diagnosed,
+            'last_visited_hospital' => $request->last_visited_hospital,
+        ]);
+        return response('Patient updated successfully');
     }
 
     /**
