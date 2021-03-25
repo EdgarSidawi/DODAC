@@ -59,6 +59,8 @@ class RegionController extends Controller
      */
     public function destroy(Region $region)
     {
-        //
+        $region->delete();
+
+        return response('deleted');
     }
 }
