@@ -9,6 +9,8 @@ class Region extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function district()
     {
         return $this->hasMany(District::class);
