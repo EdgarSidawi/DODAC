@@ -49,7 +49,13 @@ class RegionController extends Controller
      */
     public function update(Request $request, Region $region)
     {
-        //
+        $region->update(
+            [
+                'name' => $request->name
+            ]
+        );
+
+        return response('update successfully!');
     }
 
     /**
