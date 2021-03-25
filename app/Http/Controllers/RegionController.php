@@ -26,6 +26,7 @@ class RegionController extends Controller
     public function store(Request $request)
     {
         Region::create($request->all());
+        return response('Region created successfully!');
     }
 
     /**
@@ -60,7 +61,6 @@ class RegionController extends Controller
     public function destroy(Region $region)
     {
         $region->delete();
-
         return response('deleted');
     }
 }
