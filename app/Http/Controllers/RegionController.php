@@ -14,7 +14,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        Region::all();
+       return Region::all();
     }
 
     /**
@@ -25,7 +25,7 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -36,7 +36,7 @@ class RegionController extends Controller
      */
     public function show(Region $region)
     {
-        //
+        return $region;
     }
 
     /**
