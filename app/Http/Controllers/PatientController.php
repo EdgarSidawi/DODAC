@@ -38,7 +38,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        return $patient;
     }
 
 
@@ -62,6 +62,7 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+        return response('Deleted', 201);
     }
 }
