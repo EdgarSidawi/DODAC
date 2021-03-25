@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class StaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-       return Patient::all();
-    //    return Patient::latest()->get();
+        //
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -33,23 +31,22 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Staff $staff)
     {
         //
     }
-
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Staff $staff)
     {
         //
     }
@@ -57,10 +54,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Staff $staff)
     {
         //
     }
