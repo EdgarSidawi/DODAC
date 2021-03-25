@@ -14,8 +14,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-       return Patient::all();
-    //    return Patient::latest()->get();
+        return Patient::all();
+        //    return Patient::latest()->get();
     }
 
 
@@ -27,7 +27,8 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Patient::create($request->all());
+        return response('Patient created');
     }
 
     /**
