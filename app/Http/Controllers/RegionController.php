@@ -25,7 +25,7 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-
+        Region::create($request->all());
     }
 
     /**
