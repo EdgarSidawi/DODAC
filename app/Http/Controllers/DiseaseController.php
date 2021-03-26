@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Disease;
+use App\Models\District;
 use Illuminate\Http\Request;
 
 class DiseaseController extends Controller
@@ -12,19 +13,9 @@ class DiseaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(District $district)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $district->disease;
     }
 
     /**
@@ -45,17 +36,6 @@ class DiseaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Disease $disease)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Disease  $disease
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Disease $disease)
     {
         //
     }
