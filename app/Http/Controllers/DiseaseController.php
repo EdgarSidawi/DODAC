@@ -50,7 +50,8 @@ class DiseaseController extends Controller
      */
     public function update(Request $request, Disease $disease)
     {
-        //
+        $disease->update($request->all());
+        return response('Disease updated successfully');
     }
 
     /**
