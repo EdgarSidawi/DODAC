@@ -62,6 +62,7 @@ class DistrictController extends Controller
      */
     public function destroy(District $district)
     {
-        //
+        $district->delete();
+        return response('District deleted successfully');
     }
 }
