@@ -50,6 +50,8 @@ class DistrictController extends Controller
      */
     public function update(Request $request, District $district)
     {
+        $district->update($request->all());
+        return response('District updated successfully');
     }
 
     /**
