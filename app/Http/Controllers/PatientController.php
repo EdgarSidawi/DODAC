@@ -51,14 +51,8 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        $patient->update([
-            'firstName' => $request->firstName,
-            'lastName' => $request->lastName,
-            'dateOfBirth' => $request->dateOfBirth,
-            'allergies' => $request->allergies,
-            'last_disease_diagnosed' => $request->last_disease_diagnosed,
-            'last_visited_hospital' => $request->last_visited_hospital,
-        ]);
+        $patient->update($request->all());
+
         return response('Patient updated successfully');
     }
 
