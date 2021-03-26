@@ -27,6 +27,7 @@ class DiseaseController extends Controller
     public function store(Request $request, District $district)
     {
         $district->disease()->create($request->all());
+        return response('Disease created successfully');
     }
 
     /**
@@ -37,7 +38,7 @@ class DiseaseController extends Controller
      */
     public function show(Disease $disease)
     {
-        //
+        return $disease;
     }
 
     /**
