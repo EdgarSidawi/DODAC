@@ -9,13 +9,15 @@ class District extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function region()
     {
-        $this->belongsTo(Region::class);
+        return $this->belongsTo(Region::class);
     }
 
     public function disease()
     {
-        $this->hasMany(Disease::class);
+        return $this->hasMany(Disease::class);
     }
 }
