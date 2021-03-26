@@ -13,9 +13,9 @@ class DistrictController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Region $region)
     {
-        return District::all();
+        return $region->district;
     }
 
     /**

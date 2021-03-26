@@ -23,4 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('/patient', PatientController::class);
 Route::apiResource('/region', RegionController::class);
-Route::apiResource('/{region}/district', DistrictController::class);
+Route::apiResource('/region/{region}/district', DistrictController::class);
