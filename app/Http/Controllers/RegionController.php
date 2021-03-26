@@ -15,7 +15,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-       return RegionResource::collection(Region::all());
+        return RegionResource::collection(Region::all());
     }
 
     /**
@@ -50,11 +50,8 @@ class RegionController extends Controller
      */
     public function update(Request $request, Region $region)
     {
-        $region->update(
-            [
-                'name' => $request->name
-            ]
-        );
+        $region->update($request->all());
+
         return response('update successfully!');
     }
 
