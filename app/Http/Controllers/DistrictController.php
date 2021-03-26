@@ -18,16 +18,6 @@ class DistrictController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,7 +25,8 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        District::create($request->all());
+        return response('District created successfully');
     }
 
     /**
@@ -45,17 +36,6 @@ class DistrictController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(District $district)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\District  $district
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(District $district)
     {
         //
     }
