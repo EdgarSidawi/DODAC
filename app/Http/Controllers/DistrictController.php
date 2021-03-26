@@ -36,7 +36,7 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function show(District $district)
+    public function show(Region $region, District $district)
     {
         return $district;
     }
