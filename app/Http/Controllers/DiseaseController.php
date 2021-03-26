@@ -36,7 +36,7 @@ class DiseaseController extends Controller
      * @param  \App\Models\Disease  $disease
      * @return \Illuminate\Http\Response
      */
-    public function show(Disease $disease)
+    public function show(District $district, Disease $disease)
     {
         return $disease;
     }
