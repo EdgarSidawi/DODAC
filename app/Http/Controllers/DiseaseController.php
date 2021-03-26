@@ -62,6 +62,7 @@ class DiseaseController extends Controller
      */
     public function destroy(Disease $disease)
     {
-        //
+        $disease->delete();
+        return response('Disease deleted successfully');
     }
 }
