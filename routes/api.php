@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegionController;
@@ -24,3 +25,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('/patient', PatientController::class);
 Route::apiResource('/region', RegionController::class);
 Route::apiResource('/region/{region}/district', DistrictController::class);
+Route::apiResource('/district/{district}/disease', DiseaseController::class);
