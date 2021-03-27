@@ -48,7 +48,7 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district)
+    public function update(Request $request, Region $region, District $district)
     {
         $district->update($request->all());
         return response('District updated successfully');
