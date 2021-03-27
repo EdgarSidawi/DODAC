@@ -60,7 +60,8 @@ class DiseaseController extends Controller
      * @param  \App\Models\Disease  $disease
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Disease $disease)
+
+    public function destroy(District $district, Disease $disease)
     {
         $disease->delete();
         return response('Disease deleted successfully');
