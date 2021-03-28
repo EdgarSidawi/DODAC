@@ -39,7 +39,7 @@ class DistrictController extends Controller
      */
     public function show(Region $region, District $district)
     {
-        return $district;
+        return new DistrictResource($district);
     }
 
     /**
