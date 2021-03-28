@@ -39,7 +39,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return $patient;
+        return new PatientResource($patient);
     }
 
 
