@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DistrictResource;
 use App\Models\District;
 use App\Models\Region;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class DistrictController extends Controller
      */
     public function index(Region $region)
     {
-        return $region->district;
+        return DistrictResource::collection($region->district);
     }
 
     /**
