@@ -19,6 +19,7 @@ class DiseaseResource extends JsonResource
             'name' => $this->name,
             'district_id' => $this->district_id,
             'threshold' => $this->threshold,
+            'current' => $this->current,
         ];
     }
 }
