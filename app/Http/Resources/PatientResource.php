@@ -21,6 +21,7 @@ class PatientResource extends JsonResource
             'dateOfBirth' => $this->dateOfBirth,
             'allergies' => $this->allergies,
             'last_disease_diagnosed' => $this->last_disease_diagnosed,
+            'last_visited_hospital' => $this->updated_at->diffForHumans()
         ];
     }
 }

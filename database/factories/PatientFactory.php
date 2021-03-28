@@ -27,7 +27,6 @@ class PatientFactory extends Factory
             'dateOfBirth' => $this->faker->date,
             'allergies' => $this->faker->sentence,
             'last_disease_diagnosed' => $this->faker->word,
-            'last_visited_hospital' => $this->faker->date
         ];
     }
 }
