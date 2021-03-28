@@ -22,12 +22,11 @@ class PatientFactory extends Factory
     public function definition()
     {
         return [
-            'firstName'=> $this->faker->firstName,
+            'firstName' => $this->faker->firstName,
             'lastName' => $this->faker->lastName,
             'dateOfBirth' => $this->faker->date,
-            'allergies'=> $this->faker->sentence,
+            'allergies' => $this->faker->sentence,
             'last_disease_diagnosed' => $this->faker->word,
-            'last_visited_hospital'=> $this->faker->date
         ];
     }
 }
