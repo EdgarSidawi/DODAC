@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DiseaseResource;
 use App\Models\Disease;
 use App\Models\District;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class DiseaseController extends Controller
      */
     public function index(District $district)
     {
-        return $district->disease;
+        return DiseaseResource::collection($district->disease);
     }
 
     /**
