@@ -39,7 +39,7 @@ class DiseaseController extends Controller
      */
     public function show(District $district, Disease $disease)
     {
-        return $disease;
+        return new DiseaseResource($disease);
     }
 
     /**
