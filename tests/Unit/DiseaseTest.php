@@ -46,4 +46,21 @@ class DiseaseTest extends TestCase
         $this->assertEquals(10, $disease->threshold);
         $this->assertNotEmpty($disease->threshold);
     }
+
+    /** @test */
+    public function disease_has_current_attribute()
+    {
+        $region = Region::factory()->create();
+        $district = $region->district()->create([
+            'name' => 'bar'
+        ]);
+        $disease = $district->disease()->create([
+            'name' => 'foo',
+            'threshold' => 10,
+            'current' => 1
+        ]);
+
+        $this->assertEquals(1, $disease->current);
+        $this->assertNotEmpty($disease->current);
+    }
 }
