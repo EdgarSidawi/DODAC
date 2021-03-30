@@ -15,5 +15,15 @@ class PatientTest extends TestCase
         $patient = Patient::factory()->create();
 
         $this->assertEquals($patient->firstName, $patient->firstName);
+        $this->assertNotEmpty($patient->firstName);
+    }
+
+    /** @test */
+    public function patient_has_lastName_attribute()
+    {
+        $patient = Patient::factory()->create();
+
+        $this->assertEquals($patient->lastName, $patient->lastName);
+        $this->assertNotEmpty($patient->lastName);
     }
 }
