@@ -3,11 +3,14 @@
 namespace Tests\Unit;
 
 use App\Models\Patient;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 // use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
 class PatientTest extends TestCase
 {
+
+    use RefreshDatabase;
 
     /** @test */
     public function patient_has_firstName_attribute()
@@ -25,5 +28,14 @@ class PatientTest extends TestCase
 
         $this->assertEquals($patient->lastName, $patient->lastName);
         $this->assertNotEmpty($patient->lastName);
+    }
+
+    /** @test */
+    public function patient_has_dateOfBirth_attribute()
+    {
+        $patient = Patient::factory()->create();
+
+        $this->assertEquals($patient->dateOfBirth, $patient->dateOfBirth);
+        $this->assertNotEmpty($patient->dateOfBirth);
     }
 }
