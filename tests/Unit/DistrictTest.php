@@ -2,17 +2,18 @@
 
 namespace Tests\Unit;
 
+use App\Models\District;
+use App\Models\Region;
 use PHPUnit\Framework\TestCase;
 
 class DistrictTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function test_example()
+
+    /** @test */
+    public function district_has_name_attribute()
     {
-        $this->assertTrue(true);
+        $district = District::factory()->create();
+
+        $this->assertEquals($district->name, $district->name);
     }
 }
