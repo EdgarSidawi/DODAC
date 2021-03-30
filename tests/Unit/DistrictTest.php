@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Disease;
 use App\Models\District;
 use App\Models\Region;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -33,5 +34,17 @@ class DistrictTest extends TestCase
         ]);
 
         $this->assertInstanceOf(Region::class, $district->region);
+    }
+
+    /** @test */
+    public function district_has_many_diseases()
+    {
+        $region = Region::factory()->create();
+        $district = $region->district()->create(['name' => 'foo']);
+        $disease = Disease::factory()->count(4)->create([
+            'district_id' => $district->id
+        ]);
+
+        $this->assertEquals(4, $district->disease->count());
     }
 }
