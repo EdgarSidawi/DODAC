@@ -47,4 +47,13 @@ class PatientTest extends TestCase
         $this->assertEquals($patient->allergies, $patient->allergies);
         $this->assertNotEmpty($patient->allergies);
     }
+
+    /** @test */
+    public function patient_has_last_disease_diagnosed_attribute()
+    {
+        $patient = Patient::factory()->create();
+
+        $this->assertEquals($patient->last_disease_diagnosed, $patient->last_disease_diagnosed);
+        $this->assertNotEmpty($patient->last_disease_diagnosed);
+    }
 }
