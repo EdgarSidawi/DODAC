@@ -23,4 +23,15 @@ class DistrictTest extends TestCase
         $this->assertEquals($district->name, $district->name);
         $this->assertNotEmpty($district);
     }
+
+    /** @test */
+    public function district_belongs_to_region()
+    {
+        $region = Region::factory()->create();
+        $district = $region->district()->create([
+            'name' => 'foo',
+        ]);
+
+        $this->assertInstanceOf(Region::class, $district->region);
+    }
 }
