@@ -60,4 +60,16 @@ class RegionTest extends TestCase
         $response->assertSuccessful()
             ->assertStatus(200);
     }
+
+
+    /** @test */
+    public function user_can_delete_a_region()
+    {
+        $region = Region::factory()->create();
+
+        $response = $this->delete("/api/region/{$region->id}");
+
+        $response->assertSuccessful()
+            ->assertStatus(200);
+    }
 }
