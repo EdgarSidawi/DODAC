@@ -45,4 +45,19 @@ class RegionTest extends TestCase
             ->assertStatus(200)
             ->assertJsonCount(1);
     }
+
+
+    /** @test */
+    public function user_can_update_a_region()
+    {
+        $region = Region::factory()->create();
+        $data = [
+            'name' => 'foo'
+        ];
+
+        $response = $this->put("/api/region/{$region->id}", $data);
+
+        $response->assertSuccessful()
+            ->assertStatus(200);
+    }
 }
