@@ -13,6 +13,7 @@ class DiseaseTest extends TestCase
 
     use RefreshDatabase;
 
+
     /** @test */
     public function disease_has_name_attribute()
     {
@@ -62,5 +63,21 @@ class DiseaseTest extends TestCase
 
         $this->assertEquals(1, $disease->current);
         $this->assertNotEmpty($disease->current);
+    }
+
+    /** @test */
+    public function disease_belongs_to_district()
+    {
+        $region = Region::factory()->create();
+        $district = $region->district()->create([
+            'name' => 'bar'
+        ]);
+        $disease = $district->disease()->create([
+            'name' => 'foo',
+            'threshold' => 10,
+            'current' => 1
+        ]);
+
+        $this->assertInstanceOf(District::class, $disease->district);
     }
 }
