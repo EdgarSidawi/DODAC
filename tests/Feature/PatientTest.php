@@ -59,4 +59,30 @@ class PatientTest extends TestCase
         $response->assertSuccessful()
             ->assertStatus(200);
     }
+
+
+    /** @test */
+    public function user_can_update_a_patient()
+    {
+        $patient = Patient::factory()->create();
+        $data = [
+            'firstName' => 'foo'
+        ];
+        $response = $this->put("/api/patient/{$patient->id}", $data);
+
+        $response->assertSuccessful()
+            ->assertStatus(200);
+    }
+
+
+    /** @test */
+    public function user_can_delete_a_patient()
+    {
+        $patient = Patient::factory()->create();
+
+        $response = $this->delete("/api/patient/{$patient->id}");
+
+        $response->assertSuccessful()
+            ->assertStatus(201);
+    }
 }
