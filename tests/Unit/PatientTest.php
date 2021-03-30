@@ -2,17 +2,18 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use App\Models\Patient;
+// use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class PatientTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function test_example()
+
+    /** @test */
+    public function patient_has_firstName_attribute()
     {
-        $this->assertTrue(true);
+        $patient = Patient::factory()->create();
+
+        $this->assertEquals($patient->firstName, $patient->firstName);
     }
 }
