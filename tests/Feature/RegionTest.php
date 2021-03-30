@@ -8,15 +8,13 @@ use Tests\TestCase;
 
 class RegionTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    /** @test */
+    public function user_can_get_all_regions()
+    {
+        $response = $this->get('/api/region');
+
+        $response->assertSuccessful()->assertStatus(200)->assertJsonCount(1);
     }
 }
