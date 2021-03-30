@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Models\Region;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-// use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
 class RegionTest extends TestCase

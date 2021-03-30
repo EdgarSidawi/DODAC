@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\Models\Patient;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-// use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 
 class PatientTest extends TestCase
