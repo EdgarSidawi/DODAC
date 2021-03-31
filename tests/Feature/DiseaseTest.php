@@ -24,4 +24,51 @@ class DiseaseTest extends TestCase
 
         $response->assertSuccessful()->assertJsonCount(1);
     }
+
+
+    /** @test */
+    public function user_can_create_diseases_of_a_district()
+    {
+        $region = Region::factory()->create();
+        $district = District::factory()->create(['region_id' => $region->id]);
+        $disease = Disease::factory()->create(['district_id' => $district->id]);
+        $data = [
+            'name' => 'foo',
+            'threshold' => 20,
+            'current' => 5
+        ];
+
+        $response = $this->post("/api/district/{$district->id}/disease", $data);
+
+        $response->assertSuccessful()->assertStatus(200);
+    }
+
+
+    /** @test */
+    public function user_can_get_a_disease_of_a_district()
+    {
+        $region = Region::factory()->create();
+        $district = District::factory()->create(['region_id' => $region->id]);
+        $disease = Disease::factory()->create(['district_id' => $district->id]);
+
+        $response = $this->get("/api/district/{$district->id}/disease/{$disease->id}");
+
+        $response->assertSuccessful()->assertJsonCount(1);
+    }
+
+
+    /** @test */
+    public function user_can_update_diseases_of_a_district()
+    {
+        $region = Region::factory()->create();
+        $district = District::factory()->create(['region_id' => $region->id]);
+        $disease = Disease::factory()->create(['district_id' => $district->id]);
+        $data = [
+            'name' => 'foo'
+        ];
+
+        $response = $this->put("/api/district/{$district->id}/disease/{$disease->id}", $data);
+
+        $response->assertSuccessful()->assertStatus(200);
+    }
 }

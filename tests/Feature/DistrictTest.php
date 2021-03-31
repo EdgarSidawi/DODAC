@@ -28,8 +28,9 @@ class DistrictTest extends TestCase
     {
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
+        $data = ['name' => 'foo'];
 
-        $response = $this->get("/api/region/{$region->id}/district");
+        $response = $this->post("/api/region/{$region->id}/district", $data);
 
         $response->assertSuccessful()->assertStatus(200);
     }
