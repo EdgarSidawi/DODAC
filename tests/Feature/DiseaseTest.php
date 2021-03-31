@@ -71,4 +71,17 @@ class DiseaseTest extends TestCase
 
         $response->assertSuccessful()->assertStatus(200);
     }
+
+
+    /** @test */
+    public function user_can_delete_diseases_of_a_district()
+    {
+        $region = Region::factory()->create();
+        $district = District::factory()->create(['region_id' => $region->id]);
+        $disease = Disease::factory()->create(['district_id' => $district->id]);
+
+        $response = $this->delete("/api/district/{$district->id}/disease/{$disease->id}");
+
+        $response->assertSuccessful()->assertStatus(200);
+    }
 }
