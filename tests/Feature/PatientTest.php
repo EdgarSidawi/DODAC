@@ -23,31 +23,22 @@ class PatientTest extends TestCase
             ->assertJsonCount(1);
     }
 
-    // /** @test */
-    // public function user_can_create_patient()
-    // {
-    //     $data = [
-    //         'firstName' => 'Howardlyy',
-    //         'lastName' => 'Kemmer',
-    //         'dateOfBirth' => 12 / 06 / 1989,
-    //         'allergies' => 'allergic to bee sting',
-    //         'last_disease_diagnosed' => 'malaria'
-    //     ];
+    /** @test */
+    public function user_can_create_patient()
+    {
+        $data = [
+            'firstName' => 'Howardlyy',
+            'lastName' => 'Kemmer',
+            'dateOfBirth' => now(),
+            'allergies' => 'allergic to bee sting',
+            'last_disease_diagnosed' => 'malaria'
+        ];
 
-    //     $headers = [
-    //         'Accept' => 'application/json',
-    //         'Content-Type' => 'application/json',
-    //     ];
+        $response = $this->post("/api/patient", $data);
 
-    //     $response = $this->post(
-    //         "/api/patient",
-    //         $data,
-    //         $headers
-    //     );
-
-    //     $response->assertSuccessful()
-    //         ->assertStatus(200);
-    // }
+        $response->assertSuccessful()
+            ->assertStatus(200);
+    }
 
     /** @test */
     public function user_can_get_a_patient()
