@@ -70,4 +70,17 @@ class UserTest extends TestCase
 
         $this->assertTrue(Hash::check('password', $user->password));
     }
+
+    /** @test */
+    public function user_can_create_an_account()
+    {
+        $user = User::factory()->create();
+
+        $this->assertDatabaseHas('users', [
+            'firstName' => $user->firstName,
+            'username' => $user->username,
+            'email' => $user->email,
+            'password' => $user->password
+        ]);
+    }
 }
