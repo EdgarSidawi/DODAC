@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -60,5 +61,13 @@ class UserTest extends TestCase
 
         $this->assertEquals($user->email, $user->email);
         $this->assertNotEmpty($user->email);
+    }
+
+    /** @test */
+    public function user_password_has_hash_attribute()
+    {
+        $user = User::factory()->create();
+
+        $this->assertTrue(Hash::check('password', $user->password));
     }
 }
