@@ -34,4 +34,13 @@ class UserTest extends TestCase
         $this->assertEquals($user->lastName, $user->lastName);
         $this->assertNotEmpty($user->lastName);
     }
+
+    /** @test */
+    public function user_has_username_attribute()
+    {
+        $user = User::factory()->create();
+
+        $this->assertEquals($user->username, $user->username);
+        $this->assertNotEmpty($user->username);
+    }
 }
