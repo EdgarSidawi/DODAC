@@ -52,4 +52,13 @@ class UserTest extends TestCase
         $this->assertEquals($user->role, $user->role);
         $this->assertNotEmpty($user->role);
     }
+
+    /** @test */
+    public function user_has_email_attribute()
+    {
+        $user = User::factory()->create();
+
+        $this->assertEquals($user->email, $user->email);
+        $this->assertNotEmpty($user->email);
+    }
 }
