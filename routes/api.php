@@ -16,3 +16,5 @@ Route::apiResource('/patient', PatientController::class);
 Route::apiResource('/region', RegionController::class);
 Route::apiResource('/region/{region}/district', DistrictController::class);
 Route::apiResource('/district/{district}/disease', DiseaseController::class);
+
+Route::get('/login', );
