@@ -21,6 +21,11 @@ class UserController extends Controller
             return response('The provided credentials are incorrect.');
         }
 
-        return $user->createToken('Token')->plainTextToken;
+        $token = $user->createToken('Token')->plainTextToken;
+
+        return response([
+            'token' => $token,
+            'user' => $user
+        ]);
     }
 }
