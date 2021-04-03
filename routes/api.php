@@ -4,6 +4,7 @@ use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,4 @@ Route::apiResource('/region', RegionController::class);
 Route::apiResource('/region/{region}/district', DistrictController::class);
 Route::apiResource('/district/{district}/disease', DiseaseController::class);
 
-Route::get('/login', );
+Route::get('/login', [UserController::class, 'login']);
