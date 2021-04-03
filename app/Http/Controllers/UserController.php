@@ -21,6 +21,6 @@ class UserController extends Controller
             return response('The provided credentials are incorrect.');
         }
 
-        return $user->createToken($request->device_name)->plainTextToken;
+        return $user->createToken('Token')->plainTextToken;
     }
 }

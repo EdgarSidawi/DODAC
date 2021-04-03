@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -18,4 +18,4 @@ Route::apiResource('/region', RegionController::class);
 Route::apiResource('/region/{region}/district', DistrictController::class);
 Route::apiResource('/district/{district}/disease', DiseaseController::class);
 
-Route::get('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login']);
