@@ -2,21 +2,24 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    /** @test */
+    public function user_can_login()
     {
-        $response = $this->get('/');
+        $user = User::factory()->create();
+        $data = [
+            'username' => 'johhn',
+            'password' => $user->password
+        ];
 
-        $response->assertStatus(200);
+        $response = $this->post('/api/login', $data);
+
+        $response->assertOk();
     }
 }
