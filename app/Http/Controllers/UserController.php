@@ -28,4 +28,11 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return ('Logout successfull');
+    }
 }

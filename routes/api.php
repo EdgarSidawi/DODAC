@@ -19,3 +19,4 @@ Route::apiResource('/region/{region}/district', DistrictController::class);
 Route::apiResource('/district/{district}/disease', DiseaseController::class);
 
 Route::post('/login', [UserController::class, 'login']);
+Route::middleware('auth:sanctum')->delete('/logout', [UserController::class, 'logout']);
