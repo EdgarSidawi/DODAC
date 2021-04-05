@@ -31,9 +31,6 @@ class UserController extends Controller
 
     public function signup(Request $request)
     {
-        $password = Hash::make($request->password);
-        $request->password = $password;
-        // return $request->password;
         User::create($request->all());
 
         return response('User created Successfully');
