@@ -13,11 +13,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/patient', PatientController::class);
-Route::apiResource('/region', RegionController::class);
-Route::apiResource('/region/{region}/district', DistrictController::class);
-Route::apiResource('/district/{district}/disease', DiseaseController::class);
+// Route::apiResource('/patient', PatientController::class);
+// Route::apiResource('/region', RegionController::class);
+// Route::apiResource('/region/{region}/district', DistrictController::class);
+// Route::apiResource('/district/{district}/disease', DiseaseController::class);
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/signup', [UserController::class, 'signup']);
+
 Route::middleware('auth:sanctum')->delete('/logout', [UserController::class, 'logout']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::apiResource('/patient', PatientController::class);
+    Route::apiResource('/region', RegionController::class);
+    Route::apiResource('/region/{region}/district', DistrictController::class);
+    Route::apiResource('/district/{district}/disease', DiseaseController::class);
+});
