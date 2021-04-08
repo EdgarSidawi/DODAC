@@ -53,9 +53,8 @@ class DistrictController extends Controller
      */
     public function update(DistrictRequest $request, Region $region, District $district)
     {
-        $district = $district->updateOrCreate($request->all());
-        // return response('District updated successfully');
-        return new DistrictResource($district);
+        $district = $district->update($request->all());
+        return response('District updated successfully');
     }
 
     /**
