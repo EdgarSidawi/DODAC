@@ -13,7 +13,7 @@ class PatientRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class PatientRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'dateOfBirth' => 'required',
+            'allergies' => 'required',
+            'last_disease_diagnosed' => 'required',
         ];
     }
 }
