@@ -6,10 +6,12 @@ use App\Models\District;
 use App\Models\Region;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 
 class DistrictTest extends TestCase
 {
+    // use WithoutMiddleware;
     use RefreshDatabase;
 
     /** @test */
