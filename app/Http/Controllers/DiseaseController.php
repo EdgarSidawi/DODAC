@@ -53,8 +53,9 @@ class DiseaseController extends Controller
      */
     public function update(DiseaseRequest $request, District $district, Disease $disease)
     {
-        $disease->update($request->all());
-        return response('Disease updated successfully');
+        $disease = $disease->updateOrCreate($request->all());
+        // return response('Disease updated successfully');
+        return new DiseaseResource($disease);
     }
 
     /**

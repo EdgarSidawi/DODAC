@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DistrictRequest;
 use App\Http\Resources\DistrictResource;
 use App\Models\District;
 use App\Models\Region;
@@ -25,10 +26,11 @@ class DistrictController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Region $region)
+    public function store(DistrictRequest $request, Region $region)
     {
-        $region->district()->create($request->all());
-        return response('District created successfully');
+        $district = $region->district()->create($request->all());
+        // return response('District created successfully');
+        return new DistrictResource($district);
     }
 
     /**
@@ -49,10 +51,11 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region, District $district)
+    public function update(DistrictRequest $request, Region $region, District $district)
     {
-        $district->update($request->all());
-        return response('District updated successfully');
+        $district = $district->updateOrCreate($request->all());
+        // return response('District updated successfully');
+        return new DistrictResource($district);
     }
 
     /**
