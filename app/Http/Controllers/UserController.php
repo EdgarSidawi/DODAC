@@ -11,6 +11,11 @@ class UserController extends Controller
 {
     public function login(UserRequest $request)
     {
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
         $user = User::where('username', $request->username)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -25,7 +30,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function signup(Request $request)
+    public function signup(UserRequest $request)
     {
         User::create($request->all());
 
