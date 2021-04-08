@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function login(UserRequest $request)
+    public function login(Request $request)
     {
         $data = $request->validate([
             'username' => 'required',
