@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegionRequest;
 use App\Http\Resources\RegionResource;
 use App\Models\Region;
 use Illuminate\Http\Request;
@@ -24,10 +25,11 @@ class RegionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegionRequest $request)
     {
-        Region::create($request->all());
-        return response('Region created successfully!');
+        $region = Region::create($request->all());
+
+        return new RegionResource($region);
     }
 
     /**
@@ -48,7 +50,7 @@ class RegionController extends Controller
      * @param  \App\Models\Region  $region
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(RegionRequest $request, Region $region)
     {
         $region->update($request->all());
 
