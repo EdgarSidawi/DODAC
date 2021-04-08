@@ -13,7 +13,7 @@ class DiseaseRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class DiseaseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'threshold' => 'required',
+            'current' => 'required'
         ];
     }
 }

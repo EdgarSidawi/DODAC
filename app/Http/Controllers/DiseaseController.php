@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiseaseRequest;
 use App\Http\Resources\DiseaseResource;
 use App\Models\Disease;
 use App\Models\District;
@@ -25,10 +26,11 @@ class DiseaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, District $district)
+    public function store(DiseaseRequest $request, District $district)
     {
-        $district->disease()->create($request->all());
-        return response('Disease created successfully');
+        $disease = $district->disease()->create($request->all());
+        // return response('Disease created successfully');
+        return new DiseaseResource($disease);
     }
 
     /**
@@ -49,10 +51,11 @@ class DiseaseController extends Controller
      * @param  \App\Models\Disease  $disease
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district, Disease $disease)
+    public function update(DiseaseRequest $request, District $district, Disease $disease)
     {
-        $disease->update($request->all());
-        return response('Disease updated successfully');
+        $disease = $disease->update($request->all());
+        // return response('Disease updated successfully');
+        return new DiseaseResource($disease);
     }
 
     /**
