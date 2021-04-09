@@ -48,6 +48,8 @@ class Kernel extends HttpKernel
         'api-guest' => [
             // EnsureFrontendRequestsAreStateful::class, // Sanctum
             'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'auth:sanctum',
         ]
 
     ];
