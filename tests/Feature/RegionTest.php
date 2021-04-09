@@ -16,11 +16,9 @@ class RegionTest extends TestCase
     /** @test */
     public function user_can_get_all_regions()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
-        $response = $this->get('/api/region');
+        $response = $this->sanctumActingAs($user)->get('/api/region');
 
         $response->assertSuccessful()
             ->assertJsonCount(1);
@@ -30,11 +28,9 @@ class RegionTest extends TestCase
     /** @test */
     public function user_can_create_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =  User::factory()->create();
 
-        $response = $this->post('/api/region', [
+        $response = $this->sanctumActingAs($user)->post('/api/region', [
             'name' => 'foo'
         ]);
 
@@ -45,13 +41,11 @@ class RegionTest extends TestCase
     /** @test */
     public function user_can_get_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =   User::factory()->create();
 
         $region = Region::factory()->create();
 
-        $response = $this->get("/api/region/{$region->id}");
+        $response = $this->sanctumActingAs($user)->get("/api/region/{$region->id}");
 
         $response->assertSuccessful()
             ->assertStatus(200)
@@ -62,16 +56,14 @@ class RegionTest extends TestCase
     /** @test */
     public function user_can_update_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =  User::factory()->create();
 
         $region = Region::factory()->create();
         $data = [
             'name' => 'foo'
         ];
 
-        $response = $this->put("/api/region/{$region->id}", $data);
+        $response = $this->sanctumActingAs($user)->put("/api/region/{$region->id}", $data);
 
         $response->assertSuccessful();
     }
@@ -80,13 +72,11 @@ class RegionTest extends TestCase
     /** @test */
     public function user_can_delete_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
 
-        $response = $this->delete("/api/region/{$region->id}");
+        $response = $this->sanctumActingAs($user)->delete("/api/region/{$region->id}");
 
         $response->assertSuccessful();
     }
