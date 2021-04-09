@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -42,17 +43,8 @@ class UserTest extends TestCase
     public function user_can_logout()
     {
         $user = User::factory()->create();
-        $data = [
-            'username' => $user->username,
-            'password' => 'password'
-        ];
-        $my_token = $this->post('/api/login', $data);
-
-        $headers = [
-            'Authorization' => "Bearer {$my_token['token']}"
-        ];
-        $response = $this->delete('/api/logout', [], $headers);
-
+        $response = $this->sanctumActingAs($user)
+            ->delete('/api/logout');
         $response->assertSuccessful();
     }
 }
