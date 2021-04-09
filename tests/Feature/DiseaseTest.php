@@ -35,9 +35,10 @@ class DiseaseTest extends TestCase
     /** @test */
     public function user_can_create_diseases_of_a_district()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        // Sanctum::actingAs(
+        //     User::factory()->create(),
+        // );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
@@ -48,7 +49,7 @@ class DiseaseTest extends TestCase
             'current' => 5
         ];
 
-        $response = $this->post("/api/district/{$district->id}/disease", $data);
+        $response = $this->sanctumActingAs($user)->post("/api/district/{$district->id}/disease", $data);
 
         $response->assertSuccessful();
     }
@@ -57,15 +58,13 @@ class DiseaseTest extends TestCase
     /** @test */
     public function user_can_get_a_disease_of_a_district()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
         $disease = Disease::factory()->create(['district_id' => $district->id]);
 
-        $response = $this->get("/api/district/{$district->id}/disease/{$disease->id}");
+        $response = $this->sanctumActingAs($user)->get("/api/district/{$district->id}/disease/{$disease->id}");
 
         $response->assertSuccessful()->assertJsonCount(1);
     }
@@ -74,9 +73,8 @@ class DiseaseTest extends TestCase
     /** @test */
     public function user_can_update_diseases_of_a_district()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
@@ -87,7 +85,7 @@ class DiseaseTest extends TestCase
             'current' => 5
         ];
 
-        $response = $this->put("/api/district/{$district->id}/disease/{$disease->id}", $data);
+        $response = $this->sanctumActingAs($user)->put("/api/district/{$district->id}/disease/{$disease->id}", $data);
 
         $response->assertSuccessful();
     }
@@ -96,15 +94,13 @@ class DiseaseTest extends TestCase
     /** @test */
     public function user_can_delete_diseases_of_a_district()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
         $disease = Disease::factory()->create(['district_id' => $district->id]);
 
-        $response = $this->delete("/api/district/{$district->id}/disease/{$disease->id}");
+        $response = $this->sanctumActingAs($user)->delete("/api/district/{$district->id}/disease/{$disease->id}");
 
         $response->assertSuccessful();
     }
