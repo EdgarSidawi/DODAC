@@ -18,14 +18,15 @@ class DistrictTest extends TestCase
     /** @test */
     public function user_can_get_all_districts_of_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        // Sanctum::actingAs(
+        //     User::factory()->create(),
+        // );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->count(3)->create(['region_id' => $region->id]);
 
-        $response = $this->get("/api/region/{$region->id}/district");
+        $response = $this->sanctumActingAs($user)->get("/api/region/{$region->id}/district");
 
         $response->assertSuccessful()->assertJsonCount(1);
     }
@@ -33,15 +34,13 @@ class DistrictTest extends TestCase
     /** @test */
     public function user_can_create_districts_of_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
         $data = ['name' => 'foo'];
 
-        $response = $this->post("/api/region/{$region->id}/district", $data);
+        $response = $this->sanctumActingAs($user)->post("/api/region/{$region->id}/district", $data);
 
         $response->assertSuccessful();
     }
@@ -49,14 +48,12 @@ class DistrictTest extends TestCase
     /** @test */
     public function user_can_get_a_district_of_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
 
-        $response = $this->get("/api/region/{$region->id}/district/{$district->id}");
+        $response = $this->sanctumActingAs($user)->get("/api/region/{$region->id}/district/{$district->id}");
 
         $response->assertSuccessful();
     }
@@ -64,15 +61,13 @@ class DistrictTest extends TestCase
     /** @test */
     public function user_can_update_a_district_of_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
         $data = ['name' => 'foo'];
 
-        $response = $this->put("/api/region/{$region->id}/district/{$district->id}", $data);
+        $response = $this->sanctumActingAs($user)->put("/api/region/{$region->id}/district/{$district->id}", $data);
 
         $response->assertSuccessful();
     }
@@ -80,14 +75,12 @@ class DistrictTest extends TestCase
     /** @test */
     public function user_can_delete_a_district_of_a_region()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =  User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
 
-        $response = $this->delete("/api/region/{$region->id}/district/{$district->id}");
+        $response = $this->sanctumActingAs($user)->delete("/api/region/{$region->id}/district/{$district->id}");
 
         $response->assertSuccessful();
     }

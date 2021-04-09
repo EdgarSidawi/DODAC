@@ -18,15 +18,17 @@ class DiseaseTest extends TestCase
     /** @test */
     public function user_can_get_all_diseases_of_a_district()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        // Sanctum::actingAs(
+        //     User::factory()->create(),
+        // );
+
+        $user = User::factory()->create();
 
         $region = Region::factory()->create();
         $district = District::factory()->create(['region_id' => $region->id]);
         $disease = Disease::factory()->count(5)->create(['district_id' => $district->id]);
 
-        $response = $this->get("/api/district/{$district->id}/disease");
+        $response = $this->sanctumActingAs($user)->get("/api/district/{$district->id}/disease");
 
         $response->assertSuccessful()->assertJsonCount(1);
     }
@@ -35,9 +37,6 @@ class DiseaseTest extends TestCase
     /** @test */
     public function user_can_create_diseases_of_a_district()
     {
-        // Sanctum::actingAs(
-        //     User::factory()->create(),
-        // );
         $user = User::factory()->create();
 
         $region = Region::factory()->create();
