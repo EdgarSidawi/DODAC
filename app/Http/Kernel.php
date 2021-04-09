@@ -43,13 +43,14 @@ class Kernel extends HttpKernel
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'auth:sanctum',
         ],
 
         'api-guest' => [
             // EnsureFrontendRequestsAreStateful::class, // Sanctum
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            'auth:sanctum',
+            // 'auth:sanctum',
         ]
 
     ];
