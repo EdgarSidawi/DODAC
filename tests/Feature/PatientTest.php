@@ -18,11 +18,9 @@ class PatientTest extends TestCase
     /** @test */
     public function user_can_get_all_patients()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
-        $response = $this->get("/api/patient");
+        $response = $this->sanctumActingAs($user)->get("/api/patient");
 
         $response->assertSuccessful()
             ->assertJsonCount(1);
@@ -31,9 +29,7 @@ class PatientTest extends TestCase
     /** @test */
     public function user_can_create_patient()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =  User::factory()->create();
 
         $data = [
             'firstName' => 'Howardlyy',
@@ -43,7 +39,7 @@ class PatientTest extends TestCase
             'last_disease_diagnosed' => 'malaria'
         ];
 
-        $response = $this->post("/api/patient", $data);
+        $response = $this->sanctumActingAs($user)->post("/api/patient", $data);
 
         $response->assertSuccessful();
     }
@@ -51,13 +47,11 @@ class PatientTest extends TestCase
     /** @test */
     public function user_can_get_a_patient()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =  User::factory()->create();
 
         $patient = Patient::factory()->create();
 
-        $response = $this->get("/api/patient/{$patient->id}");
+        $response = $this->sanctumActingAs($user)->get("/api/patient/{$patient->id}");
 
         $response->assertSuccessful();
     }
@@ -66,9 +60,7 @@ class PatientTest extends TestCase
     /** @test */
     public function user_can_update_a_patient()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user =  User::factory()->create();
 
         $patient = Patient::factory()->create();
         $data = [
@@ -78,7 +70,7 @@ class PatientTest extends TestCase
             'allergies' => 'allergic to bee sting',
             'last_disease_diagnosed' => 'malaria'
         ];
-        $response = $this->put("/api/patient/{$patient->id}", $data);
+        $response = $this->sanctumActingAs($user)->put("/api/patient/{$patient->id}", $data);
 
         $response->assertSuccessful();
     }
@@ -87,13 +79,11 @@ class PatientTest extends TestCase
     /** @test */
     public function user_can_delete_a_patient()
     {
-        Sanctum::actingAs(
-            User::factory()->create(),
-        );
+        $user = User::factory()->create();
 
         $patient = Patient::factory()->create();
 
-        $response = $this->delete("/api/patient/{$patient->id}");
+        $response = $this->sanctumActingAs($user)->delete("/api/patient/{$patient->id}");
 
         $response->assertSuccessful()
             ->assertStatus(201);
