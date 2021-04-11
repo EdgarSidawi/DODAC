@@ -43,6 +43,6 @@ class UserController extends Controller
     {
         $request->user()->tokens()->delete();
 
-        return ('Logout successfull');
+        return response('Logout successfull');
     }
 }
