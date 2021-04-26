@@ -50,7 +50,6 @@ class Kernel extends HttpKernel
             // EnsureFrontendRequestsAreStateful::class, // Sanctum
             'throttle:api',
             // \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // 'auth:sanctum',
         ]
 
     ];
