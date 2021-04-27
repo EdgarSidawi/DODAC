@@ -45,4 +45,9 @@ class UserController extends Controller
 
         return response('Logout successfull');
     }
+
+    public function user(Request $request)
+    {
+        return $request->user();
+    }
 }

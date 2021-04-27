@@ -14,3 +14,4 @@ Route::apiResource('/region/{region}/district', DistrictController::class);
 Route::apiResource('/district/{district}/disease', DiseaseController::class);
 
 Route::delete('/logout', [UserController::class, 'logout']);
+Route::get('/user', [UserController::class, 'user']);
