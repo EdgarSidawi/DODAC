@@ -71,9 +71,10 @@ class PatientController extends Controller
         return response('Deleted', 201);
     }
 
-    public function search(Request $request){
-        $patient = Patient::where('firstName','LIKE', '%' .$request->firstName. '%' )
-                            ->orWhere('lastName', 'LIKE', '%' . $request->lastName . '%');
+    public function search(Request $request)
+    {
+        $patient = Patient::where('firstName', 'LIKE', '%' . $request->firstName . '%')
+            ->orWhere('lastName', 'LIKE', '%' . $request->lastName . '%');
 
         return PatientResource::collection($patient);
     }
