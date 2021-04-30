@@ -73,8 +73,19 @@ class PatientController extends Controller
 
     public function search(Request $request)
     {
-        $patient = Patient::where('firstName', 'LIKE', '%' . $request->firstName . '%')
-            ->orWhere('lastName', 'LIKE', '%' . $request->lastName . '%');
+        if ($request->firstName && $request->lastName) {
+            $patient = Patient::where('firstName', 'LIKE', '%' . $request->firstName . '%')
+                ->orWhere('lastName', 'LIKE', '%' . $request->lastName . '%')
+                ->get();
+        } elseif ($request->firstName) {
+            $patient = Patient::where('firstName', 'LIKE', '%' . $request->firstName . '%')
+                ->get();
+        } elseif ($request->lastName) {
+            $patient = Patient::where('lastName', 'LIKE', '%' . $request->lastName . '%')
+                ->get();
+        } else {
+            $patient = Patient::all();
+        }
 
         return PatientResource::collection($patient);
     }
