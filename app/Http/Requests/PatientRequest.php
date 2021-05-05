@@ -28,7 +28,7 @@ class PatientRequest extends FormRequest
             'lastName' => 'required',
             'dateOfBirth' => 'required',
             'allergies' => 'required',
-            'last_disease_diagnosed' => 'required',
+            // 'last_disease_diagnosed' => 'required',
         ];
     }
 }
