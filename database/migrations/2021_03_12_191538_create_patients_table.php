@@ -20,7 +20,7 @@ class CreatePatientsTable extends Migration
             $table->string('lastName');
             $table->date('dateOfBirth');
             $table->text('allergies');
-            $table->text('last_disease_diagnosed');
+            $table->text('last_disease_diagnosed')->nullable();
 
             $table->timestamps();
         });
