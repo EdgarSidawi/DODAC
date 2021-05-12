@@ -17,4 +17,5 @@ Route::delete('/logout', [UserController::class, 'logout']);
 Route::get('/user', [UserController::class, 'user']);
 
 Route::post('/searchPatient', [PatientController::class, 'search']);
-Route::post('/searchStaff', [UserController::class, 'search']);
+Route::post('/searchUser', [UserController::class, 'search']);
+Route::put('/user/{user}', [UserController::class, 'update']);
