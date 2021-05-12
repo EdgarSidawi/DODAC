@@ -50,4 +50,23 @@ class UserController extends Controller
     {
         return new UserResource($request->user());
     }
+
+    public function search(Request $request)
+    {
+        if ($request->firstName && $request->lastName) {
+            $user = User::where('firstName', 'LIKE', '%' . $request->firstName . '%')
+                ->orWhere('lastName', 'LIKE', '%' . $request->lastName . '%')
+                ->get();
+        } elseif ($request->firstName) {
+            $user = User::where('firstName', 'LIKE', '%' . $request->firstName . '%')
+                ->get();
+        } elseif ($request->lastName) {
+            $user = User::where('lastName', 'LIKE', '%' . $request->lastName . '%')
+                ->get();
+        } else {
+            $user = User::all();
+        }
+
+        return UserResource::collection($user);
+    }
 }
