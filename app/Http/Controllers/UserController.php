@@ -82,7 +82,7 @@ class UserController extends Controller
         return response('Delete Successful', 201);
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = User::create($request->all());
 
