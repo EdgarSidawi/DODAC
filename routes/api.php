@@ -19,3 +19,5 @@ Route::get('/user', [UserController::class, 'user']);
 Route::post('/searchPatient', [PatientController::class, 'search']);
 Route::post('/searchUser', [UserController::class, 'search']);
 Route::put('/user/{user}', [UserController::class, 'update']);
+Route::delete('/user/{user}', [UserController::class, 'destroy']);
+Route::post('/user', [UserController::class, 'store']);

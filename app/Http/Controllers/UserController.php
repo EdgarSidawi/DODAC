@@ -75,4 +75,17 @@ class UserController extends Controller
         $user->update($request->all());
         return response('Update Successful');
     }
+
+    public function destroy(Request $request, User $user)
+    {
+        $user->delete();
+        return response('Delete Successful', 201);
+    }
+
+    public function store(Request $request)
+    {
+        $user = User::create($request->all());
+
+        return new UserResource($user);
+    }
 }
