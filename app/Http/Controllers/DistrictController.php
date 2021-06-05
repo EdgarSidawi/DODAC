@@ -71,6 +71,6 @@ class DistrictController extends Controller
 
     public function districts()
     {
-        DistrictResource::collection(District::all());
+        return DistrictResource::collection(District::all());
     }
 }
