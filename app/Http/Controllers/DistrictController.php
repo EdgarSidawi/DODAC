@@ -68,4 +68,9 @@ class DistrictController extends Controller
         $district->delete();
         return response('District deleted successfully');
     }
+
+    public function districts()
+    {
+        DistrictResource::collection(District::all());
+    }
 }
