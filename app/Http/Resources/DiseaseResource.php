@@ -20,7 +20,7 @@ class DiseaseResource extends JsonResource
             'district_id' => $this->district_id,
             'threshold' => $this->threshold,
             'current' => $this->current,
-            'updated_at' => $this->updated_at->diffForHumans()
+            // 'updated_at' => $this->updated_at->diffForHumans()
         ];
     }
 }
