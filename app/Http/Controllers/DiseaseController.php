@@ -72,6 +72,6 @@ class DiseaseController extends Controller
 
     public function monitor()
     {
-        return Disease::with('district')->get();
+        return Disease::with('district')->orderBy('district_id', 'ASC')->get();
     }
 }
