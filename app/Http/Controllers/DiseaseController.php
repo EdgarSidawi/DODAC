@@ -69,4 +69,9 @@ class DiseaseController extends Controller
         $disease->delete();
         return response('Disease deleted successfully');
     }
+
+    public function monitor()
+    {
+        return Disease::with('district')->get();
+    }
 }
