@@ -21,6 +21,5 @@ Route::post('/searchUser', [UserController::class, 'search']);
 Route::put('/user/{user}', [UserController::class, 'update']);
 Route::delete('/user/{user}', [UserController::class, 'destroy']);
 Route::post('/user', [UserController::class, 'store']);
-Route::get('/district', [DistrictController::class, 'districts']);
 
 Route::get('/disease', [DiseaseController::class, 'monitor']);
