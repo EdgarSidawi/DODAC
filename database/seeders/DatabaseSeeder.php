@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        User::factory(10)->create();
+        User::factory(1)->create();
         Patient::factory(10)->create();
-        Region::factory(10)->create();
-        District::factory(20)->create();
-        Disease::factory(50)->create();
+        Region::factory(1)->create();
+        District::factory(1)->create();
+        // Disease::factory(50)->create();
     }
 }
