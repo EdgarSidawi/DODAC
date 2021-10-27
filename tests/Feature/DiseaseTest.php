@@ -22,7 +22,6 @@ class DiseaseTest extends TestCase
         //     User::factory()->create(),
         // );
 
-
         $user = User::factory()->create();
 
         $region = Region::factory()->create();
