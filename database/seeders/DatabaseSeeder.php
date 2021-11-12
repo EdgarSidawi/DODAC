@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         Patient::factory(10)->create();
         Region::factory(1)->create();
         District::factory(1)->create();
-        // Disease::factory(50)->create();
+        Disease::factory(50)->create();
     }
 }
