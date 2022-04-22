@@ -29,7 +29,6 @@ class DistrictController extends Controller
     public function store(DistrictRequest $request, Region $region)
     {
         $district = $region->district()->create($request->all());
-        // return response('District created successfully');
         return new DistrictResource($district);
     }
 

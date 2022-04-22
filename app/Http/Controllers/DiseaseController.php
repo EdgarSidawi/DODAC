@@ -29,7 +29,6 @@ class DiseaseController extends Controller
     public function store(DiseaseRequest $request, District $district)
     {
         $disease = $district->disease()->create($request->all());
-        // return response('Disease created successfully');
         return new DiseaseResource($disease);
     }
 
